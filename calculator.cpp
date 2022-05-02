@@ -112,7 +112,7 @@ int Calculator::handle(char* eq)
                 else
                 {
                     cur = ope.top();
-                    while (cal(cur) >= cal(eq[i]))
+                    while (cal(cur) >= cal(eq[i]) && numb.size() > 1)
                     {
                         int y = numb.top();
                         numb.pop();
