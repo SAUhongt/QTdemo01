@@ -32,7 +32,10 @@ public:
     //返回运算符优先级或者计算结果
     static int cal(char c, int flag = 0, int x = 0, int y = 0);
     //生成最大数为max且不为零
-    static int random(int max);
+    static int random(int max, int min = 1);
+
+    //去除某个字符
+    static void delete_char(char str[], int target);
 };
 
 #endif // CALCULATOR_H

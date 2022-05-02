@@ -112,29 +112,25 @@ Widget::Widget(QWidget *parent)
         this->len = ui->len->text().toInt();
         this->eq = Calculator::create(10, coll1.toUtf8().data(), coll2.toUtf8().data(), this->maxNum, this->len, this->flag);
         ui->label->setText(QString(this->eq[0]));
-        this->res[0] = Calculator::handle(this->eq[0]);
         ui->label_2->setText(QString(this->eq[1]));
-        this->res[1] = Calculator::handle(this->eq[1]);
         ui->label_3->setText(QString(this->eq[2]));
-        this->res[2] = Calculator::handle(this->eq[2]);
         ui->label_4->setText(QString(this->eq[3]));
-        this->res[3] = Calculator::handle(this->eq[3]);
         ui->label_5->setText(QString(this->eq[4]));
-        this->res[4] = Calculator::handle(this->eq[4]);
         ui->label_6->setText(QString(this->eq[5]));
-        this->res[5] = Calculator::handle(this->eq[5]);
         ui->label_7->setText(QString(this->eq[6]));
-        this->res[6] = Calculator::handle(this->eq[6]);
         ui->label_8->setText(QString(this->eq[7]));
-        this->res[7] = Calculator::handle(this->eq[7]);
         ui->label_9->setText(QString(this->eq[8]));
-        this->res[8] = Calculator::handle(this->eq[8]);
         ui->label_10->setText(QString(this->eq[9]));
-        this->res[9] = Calculator::handle(this->eq[9]);
         ui->showPushButton->setEnabled(true);
     });
 
     connect(ui->showPushButton, &QPushButton::clicked, [=](){
+        char str[100] = {0};
+        for(int i = 0; i < 10; i++)
+        {
+            strcpy(str,eq[i]);
+            this->res[i] = Calculator::handle(str);
+        }
         ui->label_14->setText(QString::number(this->res[0]));
         ui->label_15->setText(QString::number(this->res[1]));
         ui->label_16->setText(QString::number(this->res[2]));
